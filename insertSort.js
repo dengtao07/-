@@ -3,8 +3,9 @@ function insertSort(arr) {
   let length = arr.length;
   for(let i = 1; i < length; i++) {
     let temp = arr[i];
-    for(let j = i; j > 0; j--) {
-      if(arr[j] >= arr[j-1]) {
+    let j = i;
+    for(; j > 0; j--) {
+      if(temp >= arr[j-1]) {
         break;      // 当前考察的数大于前一个数，证明有序，退出循环
       }
       arr[j] = arr[j-1]; // 将前一个数复制到后一个数上
