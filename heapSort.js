@@ -33,6 +33,6 @@ function heapSort(A) {
   }
   return A;
 }
-
+// example
 let Arr = [4, 6, 8, 5, 9,1,2,5,3,2];
 alert(heapSort(Arr));
