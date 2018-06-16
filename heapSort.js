@@ -1,6 +1,6 @@
 // 将i结点以下的堆整理为大顶堆
 function adjustHeap(A, i, length) {
-  var temp = A[i];
+  let temp = A[i];
   for(let j = 2*i+1; j<length; j = 2*j+1) {
     if(j+1 < length && A[j] < A[j+1]) {
       j++;
@@ -16,7 +16,7 @@ function adjustHeap(A, i, length) {
 }
 // 交换
 function swap(A, i, j) {
-  var temp = A[i];
+  let temp = A[i];
   A[i] = A[j];
   A[j] = temp; 
 }
@@ -31,8 +31,8 @@ function heapSort(A) {
     swap(A, 0, i);
     adjustHeap(A, 0, i);
   }
+  return A;
 }
 
-var Arr = [4, 6, 8, 5, 9,1,2,5,3,2];
-heapSort(Arr);
-alert(Arr);
+let Arr = [4, 6, 8, 5, 9,1,2,5,3,2];
+alert(heapSort(Arr));
