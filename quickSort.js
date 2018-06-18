@@ -33,6 +33,7 @@ function quickSort(arr, i, j) {
     return arr;
   }
 }
+
 // example
 let arr = [2, 10, 4, 1, 0, 9, 5 ,2];
 alert(quickSort(arr, 0 , arr.length-1));
