@@ -1,4 +1,7 @@
 // 将i结点以下的堆整理为大顶堆
+// 结点数为n的二叉树的深度为[log2n]+1,
+// 又adjustHeap的过程每层只需遍历一个结点,
+// 所以如果整理根节点以下的子堆,循环的次数为O(logn)
 function adjustHeap(A, i, length) {
   let temp = A[i];
   for(let j = 2*i+1; j<length; j = 2*j+1) {

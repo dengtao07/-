@@ -1,6 +1,7 @@
 // shellSort
 function shellSort(arr) {
   for(let gap = Math.floor(arr.length/2); gap > 0; gap = Math.floor(gap/2)) {
+    // 内层循环与插入排序的写法基本一致，只是每次移动的步长变为 gap
     for(let i = gap; i < arr.length; i++) {
       let j = i;
       let temp = arr[j];
