@@ -17,4 +17,4 @@ function insertSort(arr) {
 
 // example
 let arr = [2,5,10,7,10,32,90,9,11,1,0,10]
-alert(insertSort(arr));
+console.log(insertSort(arr));
