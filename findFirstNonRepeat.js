@@ -1,12 +1,9 @@
 function findFirstNonRepeat(arr) {
   let hashMap = new Map();
   for (let i = 0; i < arr.length; i++) {
-    if(hashMap.has(arr[i])) {
-      hashMap.set(arr[i], true);
-    } else {
-      hashMap.set(arr[i], false);
-    }
+    hashMap.set(arr[i], hashMap.has(arr[i]))
   }
+  // 找到第一个值为 false 的，就代表第一个非重复数，return 就好了
   for(let [key, value] of hashMap.entries()) {
     if(value === false) {
       return key;
