@@ -1,33 +1,61 @@
-// 交换元素
-function swap(arr, i , j) {
-  let temp = arr[i];
-  arr[i] = arr[j];
-  arr[j] = temp; 
-}
+// // 快排
+// function quickSort(arr, i, j) {
+//   if(i < j) {
+//     let left = i;
+//     let right = j;
+//     let pivot = arr[left];
+//     while(i < j) {
+//       while(arr[j] >= pivot && i < j) {  // 从后往前找比基准小的数
+//         j--;
+//       }
+//       if(i < j) {
+//         arr[i++] = arr[j];
+//       }
+//       while(arr[i] <= pivot && i < j) {  // 从前往后找比基准大的数
+//         i++;
+//       }
+//       if(i < j) {
+//         arr[j--] = arr[i];
+//       }
+//     }
+//     arr[i] = pivot;
+//     quickSort(arr, left, i-1);
+//     quickSort(arr, i+1, right);
+//     return arr;
+//   }
+// }
 
-// 快排
-function quickSort(arr, i, j) {
-  if(i < j) {
-    let left = i;
-    let right = j;
-    let pivot = arr[left];
+// // example
+// let arr = [2, 10, 4, 1, 0, 9, 5 ,2];
+// console.log(quickSort(arr, 0 , arr.length-1));
+
+
+// 快排 partition 的版本
+function partition (arr, i, j) {
+    // let left = i;
+    // let right = j;
+    let pivot = arr[i];
     while(i < j) {
-      while(arr[j] >= pivot && i < j) {
+      while(arr[j] >= pivot && i < j) {  // 从后往前找比基准小的数
         j--;
       }
       if(i < j) {
-        swap(arr, i , j);
-        i++;
+        arr[i++] = arr[j];
       }
-      while(arr[i] <= pivot && i < j) {
+      while(arr[i] <= pivot && i < j) {  // 从前往后找比基准大的数
         i++;
       }
       if(i < j) {
-        swap(arr, i , j);
-        j--;
+        arr[j--] = arr[i];
       }
     }
     arr[i] = pivot;
+    return i;
+}
+
+function quickSort (arr, left, right) {
+  if (left < right) {
+    let i = partition(arr, left, right);
     quickSort(arr, left, i-1);
     quickSort(arr, i+1, right);
     return arr;
@@ -36,4 +64,4 @@ function quickSort(arr, i, j) {
 
 // example
 let arr = [2, 10, 4, 1, 0, 9, 5 ,2];
-alert(quickSort(arr, 0 , arr.length-1));
+console.log(quickSort(arr, 0 , arr.length-1));
