@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Flex</title>
+  <style>
+    #div1{
+      width: 100px;
+      height: 100px;
+      background: green;
+      position: absolute;
+    }
+</style>
+</head>
+<body>
+  <div id="div1"></div>
+  <script>
+    var oDiv = document.getElementById('div1');
+    var disX = 0;
+    var disY = 0;
+
+    oDiv.onmousedown = function (ev) {
+      var ev = ev|| window.event;     // 兼容 IE 获取事件对象
+      disX = ev.clientX - oDiv.offsetLeft;    // clientX 是光标剧浏览器页面的水平坐标，offsetLeft是元素左上角距最近一个定位祖先元素左边的距离
+      disY = ev.clientY - oDiv.offsetTop;     //
+      document.onmousemove = function (ev) {
+        var ev = ev|| window.event;
+        var L = ev.clientX - disX;
+        var T = ev.clientY - disY;
+        var pW = document.documentElement.clientWidth;//document.documentElement 获取的是<html>标签，网页可见区域宽
+        var pH = document.documentElement.clientHeight;
+        var divW = oDiv.offsetWidth;//Dom宽度
+        var divH = oDiv.offsetHeight;
+        // 范围限定
+        if(L < 0){
+          L = 0;
+        }
+        if(T < 0){
+          T = 0;
+        }
+        if(L > pW - divW){
+          L = pW - divW;
+        }
+        if(T > pH - divH){
+          T = pH - divH;
+        }
+        // 范围限定 end
+        oDiv.style.left = L + "px";
+        oDiv.style.top = T + "px";
+      }
+      document.onmouseup = function () {
+        document.onmousemove = null;
+        document.onmouseup = null;
+      }
+    }
+  </script>
+</body>
+</html>
