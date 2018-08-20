@@ -1,3 +1,0 @@
-function sad(arr) {
-  
-}
